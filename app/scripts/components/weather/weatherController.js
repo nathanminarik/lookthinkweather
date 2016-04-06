@@ -6,9 +6,13 @@ angular.module('weatherApp').controller('weatherCtrl', function($scope, weatherS
   
   $scope.hello = "Nathan";
   
-  $scope.four = 2+2;
+  $scope.alerts = [];
+  $scope.todo = ["1", "2"];
   
+
   weatherService.getWeather(function (weather){
-    $scope.weather = weather;      
+    $scope.weather = weather.data;
+    $scope.alerts = weather.data.alerts;
+    console.log(weather);    
   });
 });

@@ -26,10 +26,14 @@ webpackJsonp([0],[
 	  
 	  $scope.hello = "Nathan";
 	  
-	  $scope.four = 2+2;
+	  $scope.alerts = [];
+	  $scope.todo = ["1", "2"];
 	  
+
 	  weatherService.getWeather(function (weather){
-	    $scope.weather = weather;      
+	    $scope.weather = weather.data;
+	    $scope.alerts = weather.data.alerts;
+	    console.log(weather);    
 	  });
 	});
 
@@ -44,7 +48,6 @@ webpackJsonp([0],[
 	angular.module('weatherApp')
 	.service('weatherService', function($http) {
 	  this.getWeather = function (cb) {
-	    //  $http.get('http://jsonplaceholder.typicode.com/posts').then(cb);
 	    $http.get('https://api.forecast.io/forecast/e7fa01d3a0f5e43c11977172fdc5b6e5/38.9070,-77.0252').then(cb);
 	  };
 
